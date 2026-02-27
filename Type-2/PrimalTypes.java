@@ -1,4 +1,4 @@
-public class Programa {
+public class PrimalTypes {
     public static void main(String[] args) {
         System.out.println("Meu nome completo é: Daniel Silva");
 
