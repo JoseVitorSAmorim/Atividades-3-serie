@@ -1,31 +1,35 @@
-import sqlite3
+from componentes.interface import *
+from componentes.db import *
+from time import sleep
 
-# 1. Conecta ao banco de dados (ou cria se não existir)
-def conectar_db(){
-conn = sqlite3.connect('GreenQuest.db')
-cursor = conn.cursor()
-}
-
-# 2. Criando a tabela (DDL)
-def criar_db(){
-cursor.execute('''
-    CREATE TABLE atividades_sustentaveis (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        descricao_acao TEXT,
-        pontos INT,
-        data_realizacao DATE
-    )
-''')
-}
-
-# 3. Inserindo dados (DML)
-def insert(){
-cursor.execute("INSERT INTO atividades_sustentaveis (descricao_acao, pontos) VALUES ()")
-conn.commit()
-}
-
-# 4. Consultando dados (DQL)
-def select(){
-cursor.execute("SELECT * FROM ")
-print(cursor.fetchall())
-}
+criar_db()
+while True:
+    titulo("Bem-vindo ao GreenQuest!")
+    menu(["Registrar Atividade Sustentável", "Listar Atividades Registradas", "Sair"])
+    escolha = input("Escolha uma opção: ")
+    if escolha == '1':
+        descricao_acao = input("Descreva a atividade sustentável que realizou: ")
+        pontos = int(input("Quantos pontos essa atividade vale? "))
+        inserir_atividade(descricao_acao, pontos)
+        print("Atividade registrada com sucesso!")
+    elif escolha == '2':
+        while True:
+            atividades = listar_atividades()
+            if atividades:
+                for id, descricao_acao, pontos, data_realizacao in atividades:
+                    print(f'ID: {id} | Descrição: {descricao_acao} | Pontos: {pontos} | Data: {data_realizacao}')
+            else:
+                print("\033[31mNenhuma atividade registrada ainda.\033[0m")
+            print("\n1 - Voltar ao menu")
+            escolha_submenu = input("Escolha uma opção: ")
+            if escolha_submenu == '1':
+                break
+            else:
+                print("\033[31mOpção inválida. Por favor, tente novamente.\033[0m")
+    elif escolha == '3':
+        print("\033[33mFinalizando o programa...\033[0m")
+        sleep(2)
+        break
+    else:
+        print("\033[31mOpção inválida. Por favor, tente novamente.\033[0m")
+print("\033[32mObrigado por usar o GreenQuest! Continue praticando atividades sustentáveis!\033[0m")
