@@ -1,1 +1,1 @@
-Salve senhores, este repositório serve para armazenar ativiades do meu ensino médio.
+Salve senhores, este repositório serve para armazenar atividades do meu ensino médio.
