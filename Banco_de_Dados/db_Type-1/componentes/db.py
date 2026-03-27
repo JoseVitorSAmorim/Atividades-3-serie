@@ -35,3 +35,12 @@ def listar_atividades():
     atividades = cursor.fetchall()
     conn.close()
     return atividades
+
+def deletar(item):
+    conn, cursor = conectar_db()
+    cursor.execute('''
+        DELETE FROM atividades_sustentaveis WHERE id=?
+    ''', (item,))
+    linhas_afetadas = cursor.rowcount
+    conn.commit()
+    conn.close()

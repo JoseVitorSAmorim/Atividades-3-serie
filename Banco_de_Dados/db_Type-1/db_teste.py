@@ -20,10 +20,19 @@ while True:
                     print(f'ID: {id} | Descrição: {descricao_acao} | Pontos: {pontos} | Data: {data_realizacao}')
             else:
                 print("\033[31mNenhuma atividade registrada ainda.\033[0m")
-            print("\n1 - Voltar ao menu")
-            escolha_submenu = input("Escolha uma opção: ")
-            if escolha_submenu == '1':
+            submenu(["Sair", "Remover"])
+            escolha_submenu = int(input("Escolha uma opção: "))
+            if escolha_submenu == 1:
                 break
+            elif escolha_submenu == 2:
+                id_del = int(input("Qual ID a ser apagado? "))
+                deletar(id_del)
+                if deletar(id_del):
+                    print("ID excluído com sucesso!")
+                else:
+                    print("\033[31mID não encontrado!\033[0m")
+                linhas()
+                
             else:
                 print("\033[31mOpção inválida. Por favor, tente novamente.\033[0m")
     elif escolha == '3':

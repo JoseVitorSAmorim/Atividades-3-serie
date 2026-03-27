@@ -8,6 +8,9 @@ def titulo(texto):
 
 def menu(lista):
     titulo("MENU")
+    submenu(lista)
+
+def submenu(lista):
     for i, item in enumerate(lista, 1):
         print(f'\033[33m{i}\033[0m - \033[34m{item}\033[0m')
     linhas()
