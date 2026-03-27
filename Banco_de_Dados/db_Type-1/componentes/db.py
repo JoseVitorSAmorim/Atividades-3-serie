@@ -44,3 +44,8 @@ def deletar(item):
     linhas_afetadas = cursor.rowcount
     conn.commit()
     conn.close()
+    if linhas_afetadas > 0:
+       return True
+    else:
+        return False
+    

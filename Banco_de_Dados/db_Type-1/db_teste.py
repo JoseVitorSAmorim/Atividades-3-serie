@@ -26,9 +26,8 @@ while True:
                 break
             elif escolha_submenu == 2:
                 id_del = int(input("Qual ID a ser apagado? "))
-                deletar(id_del)
                 if deletar(id_del):
-                    print("ID excluído com sucesso!")
+                    print("\033[32mID excluído com sucesso!\033[0m")
                 else:
                     print("\033[31mID não encontrado!\033[0m")
                 linhas()
