@@ -1,0 +1,1 @@
+Diretório para atividades da matéria de Banco de Dados
